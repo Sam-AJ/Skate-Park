@@ -3,8 +3,7 @@ const app = express();
 const hbs = require('express-handlebars');
 const fileupload = require('express-fileupload');
 const jwt = require('jsonwebtoken');
-
-app.set("view engine", "handlebars");
+const { insertarSkater, consultarSkaters, consultarSkater, actualizarSkater, actualizarEstadoSkater, eliminarSkater } = require('./consultas.js');
 
 app.use(express.static(`${__dirname}/public`));
 
@@ -13,6 +12,8 @@ app.use(fileupload({
     abortOnLimit: true,
     responseOnLimit: "EL archivo supera el límite permitido"
 }));
+
+app.set("view engine", "handlebars");
 
 app.engine(
     "handlebars",
